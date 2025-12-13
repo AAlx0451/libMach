@@ -5,6 +5,7 @@ TARGET_LIBC = libmach.a
 
 CFLAGS ?=
 CPPFLAGS ?=
+SLIBC ?= ../../Small-LibC
 
 GENERIC_SRCS := $(wildcard */*.c)
 
@@ -17,7 +18,7 @@ all: $(TARGET_LIBC)
 
 AR = ar
 PIC = -fPIC
-BASE_CFLAGS = $(CPPFLAGS) $(CFLAGS) -I$(INCDIR) -Os $(PIC) -std=gnu99 -nostdinc -I/usr/share/llvm/lib/clang/6.0.1/include
+BASE_CFLAGS = $(CPPFLAGS) $(CFLAGS) -I$(INCDIR) -Os $(PIC) -std=gnu99 -nostdinc -I/usr/share/llvm/lib/clang/6.0.1/include -I$(SLIBC)/include
 
 OBJS_GENERIC := $(patsubst %.c,$(OBJDIR)/%.o,$(GENERIC_SRCS))
 
